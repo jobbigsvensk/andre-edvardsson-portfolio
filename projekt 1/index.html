@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>André Edvardsson – Portfolio</title>
+  <meta name="description" content="Portfolio och kort presentation av André Edvardsson." />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8fafc" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b1220" />
+  <meta property="og:title" content="André Edvardsson – Portfolio" />
+  <meta property="og:description" content="Kort presentation, intressen och erfarenheter." />
+  <meta property="og:image" content="assets/profilbild.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="sv_SE" />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #2563eb;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 6px 18px rgba(2, 6, 23, 0.06);
+      --radius: 12px;
+      scroll-behavior: smooth;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height: 1.6; color: var(--text); background: var(--bg); }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.25rem; }
+    .section-title { font-size: clamp(1.5rem, 1.2vw + 1rem, 2rem); margin: 0 0 1rem 0; color: var(--accent); }
+    header { border-bottom: 1px solid var(--border); background: #fff; }
+    .hero { display: grid; grid-template-columns: 1fr; gap: 1.5rem; align-items: center; padding: 2rem 0; }
+    @media (min-width: 800px) { .hero { grid-template-columns: 1fr 1fr; } }
+    .hero-content { background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding:1.25rem 1.25rem 1rem; box-shadow: var(--shadow); }
+    .hero h1 { margin: 0 0 .5rem 0; font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem); }
+    .lead { margin: 0 0 1rem 0; color: var(--muted); max-width: 55ch; }
+    .actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .btn { display:inline-block; padding:.55rem .9rem; border-radius:10px; border:1px solid var(--border); text-decoration:none; font-weight:600; }
+    .btn.primary { background: var(--accent); color:#fff; border-color: transparent; }
+    .btn.secondary { background:#fff; color: var(--accent); }
+    figure.profile { margin: 0; overflow: hidden; border-radius: var(--radius); border:1px solid var(--border); box-shadow: var(--shadow); background: #fff; }
+    figure.profile figcaption { padding:.6rem .8rem; color: var(--muted); font-size:.9rem; border-top:1px solid var(--border); }
+    .about-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 800px) { .about-grid { grid-template-columns: 1fr 1fr; } }
+    .hobby-list { list-style: square; padding-left: 1.1rem; }
+
+    /* CV / Erfarenheter i kortformat */
+    .cv { background:#f3f4f6; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .cv-grid { display: grid; gap: 1rem; }
+    @media (min-width: 700px) { .cv-grid { grid-template-columns: 1fr 1fr; } }
+    .cv-card { background: #fff; border:1px solid var(--border); border-radius: var(--radius); padding:1rem; box-shadow: var(--shadow); }
+    .cv-card time { font-weight: 600; color: var(--accent); }
+    .cv-card h3 { margin:.2rem 0; font-size:1.1rem; }
+    .cv-card p { margin:.4rem 0 0 0; color: var(--muted); font-size:.95rem; }
+
+    footer { color: var(--muted); text-align:center; padding:1rem; }
+
+    /* Tillgänglighet: fokus och skip-länk */
+    a:focus-visible, button:focus-visible, .skip-link:focus { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .skip-link { position: absolute; left: -9999px; top: auto; }
+    .skip-link:focus { left: 1rem; top: 1rem; background: #fff; padding: .5rem .75rem; border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow); z-index: 1000; }
+
+    /* Varför-utbildningen (flex 3-kolumner) */
+    .why { padding: 2rem 0; }
+    .why .lead { margin-bottom: 1rem; }
+    .why-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .why-card { flex: 1 1 240px; background: var(--card); border:1px solid var(--border); border-radius: var(--radius); padding:1rem; box-shadow: var(--shadow); }
+    .why-card h3 { margin:.2rem 0 .25rem; font-size:1.05rem; }
+    .table-wrap { overflow-x:auto; background: var(--card); border:1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); margin-top: .75rem; }
+    .company-table { width:100%; border-collapse: collapse; }
+    .company-table th, .company-table td { padding:.7rem 1rem; border-bottom:1px solid var(--border); text-align:left; }
+    .company-table th { color: var(--muted); font-weight:700; white-space: nowrap; }
+    .company-table th:not(:last-child), .company-table td:not(:last-child) { border-right: 1px solid var(--border); }
+    .company-table tbody tr:hover td { background: rgba(37, 99, 235, 0.06); }
+
+    /* Mörkt läge */
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0b1220; --text:#e5e7eb; --muted:#a8b0bf; --card:#0f172a; --border:#192235; }
+      header, .cv, .cv-card, figure.profile { background: var(--card); }
+    }
+
+    /* Respekt för reduced motion */
+    @media (prefers-reduced-motion: reduce) { :root { scroll-behavior: auto; } }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "André Edvardsson",
+    "image": "assets/profilbild.jpg"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#om-mig">Hoppa till innehåll</a>
+  <header>
+    <div class="container hero">
+      <div class="hero-content">
+        <h1>André Edvardsson</h1>
+        <p class="lead">Kort presentation av mina intressen, erfarenheter och mål med utbildningen.</p>
+        <div class="actions">
+          <a class="btn primary" href="#cv" aria-label="Gå till CV-sektionen">Se CV</a>
+          <a class="btn secondary" href="#om-mig" aria-label="Gå till Om mig-sektionen">Om mig</a>
+          <a class="btn secondary" href="#varfor" aria-label="Gå till Varför utbildningen-sektionen">Varför utbildningen</a>
+        </div>
+      </div>
+      <figure class="profile">
+        <img src="assets/profilbild.jpg" alt="Porträttbild på André Edvardsson" width="4000" height="3000" fetchpriority="high" decoding="async" sizes="(min-width: 800px) 384px, 100vw" />
+      </figure>
+    </div>
+  </header>
+
+  <main>
+    <section id="om-mig" class="container">
+      <h2 class="section-title">Hej klasskamrater!</h2>
+      <p>Jag heter André Edvardsson och bor med min flickvän, min son och våra tre katter. Vi har ett gemensamt intresse för tv‑spel, något vi ofta gör tillsammans som familj.</p>
+      <p>Jag har ett nyfunnet intresse för camping och känner att det är en plats för att återställa mig och uppskatta tystnaden.</p>
+      <p>Har en utbildning som nätverkstekniker sedan tidigare och har arbetat som byggnadsplåtslagare i 12 år. Just nu har jag tagit studieledigt för att ta nya tag inom IT!</p>
+      <h3>Intressen</h3>
+      <ul class="hobby-list">
+        <li>Datorer och tv‑spel</li>
+        <li>Natur och camping</li>
+        <li>Fotografering</li>
+        <li>Katter och finöl</li>
+      </ul>
+    </section>
+
+    <section id="cv" class="cv">
+      <div class="container">
+        <h2 class="section-title">CV / Erfarenheter</h2>
+        <div class="cv-grid">
+          <article class="cv-card">
+            <time datetime="2023-11">nov 2023</time> – <time datetime="2025-08">aug 2025</time>
+            <h3>Byggnadsplåtslagare – LOMMA TAK AB</h3>
+          </article>
+          <article class="cv-card">
+            <time datetime="2020-12">dec 2020</time> – <time datetime="2024-07">jul 2024</time>
+            <h3>IT‑Support – Hemfixarna Nordic AB</h3>
+          </article>
+          <article class="cv-card">
+            <time datetime="2023-07">jul 2023</time> – <time datetime="2023-11">nov 2023</time>
+            <h3>Montör – SECOR</h3>
+          </article>
+          <article class="cv-card">
+            <time datetime="2023-01">jan 2023</time> – <time datetime="2023-07">jul 2023</time>
+            <h3>Konsult – Emploid</h3>
+          </article>
+          <article class="cv-card">
+            <time datetime="2022-06">jun 2022</time> – <time datetime="2022-11">nov 2022</time>
+            <h3>Byggnadsplåtslagare – HSH Byggplåt AB</h3>
+          </article>
+          <article class="cv-card">
+            <time datetime="2017-03">mar 2017</time> – <time datetime="2021-02">feb 2021</time>
+            <h3>Byggnadsplåtslagare – Johanssons Byggplåt i Malmö AB</h3>
+          </article>
+          <article class="cv-card">
+            <time datetime="2017-09">sep 2017</time> – <time datetime="2018-09">sep 2018</time>
+            <h3>Byggnadsplåtslagare – Malmö Byggnadsplåtslageri AB</h3>
+          </article>
+          <article class="cv-card">
+            <time datetime="2013-05">maj 2013</time> – <time datetime="2017-09">sep 2017</time>
+            <h3>Byggnadsplåtslagare – Plåtexpressen AB</h3>
+          </article>
+          <article class="cv-card">
+            <time datetime="2008-06">jun 2008</time> – <time datetime="2012-06">jun 2012</time>
+            <h3>Tryckare – Sydsvenskan Tryck</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="varfor" class="container why">
+      <h2 class="section-title">Varför jag vill plugga cybersäkerhet</h2>
+      <p class="lead">Det verkar vara ett yrke med varierande arbetsuppgifter från dag till dag. Yrket ligger i tiden och efterfrågan är stor, vilket gör att det finns gott om möjligheter efter examen. Jag lockas av roller som IT‑säkerhetsspecialist eller Security Engineer.</p>
+
+      <div class="why-grid" role="list">
+        <article class="why-card" role="listitem">
+          <h3>Omväxlande problemlösning</h3>
+          <p>Incidenter, hotbildsanalys och förbättringar i försvarslinjer gör arbetsdagarna varierade och utmanande.</p>
+        </article>
+        <article class="why-card" role="listitem">
+          <h3>Roll jag siktar på</h3>
+          <p>IT‑säkerhetsspecialist / Security Engineer med fokus på hårdning, övervakning och förebyggande arbete.</p>
+        </article>
+        <article class="why-card" role="listitem">
+          <h3>Goda jobbutsikter</h3>
+          <p>Stor efterfrågan och tydlig samhällsnytta – säker digital infrastruktur behövs överallt.</p>
+        </article>
+      </div>
+
+      <h3>Företag i Skåne</h3>
+      <p class="lead">Exempel på arbetsplats i Malmö/Lund som jobbar med cybersäkerhet.</p>
+      <div class="table-wrap">
+        <table class="company-table">
+          <colgroup>
+            <col style="width:28%" />
+            <col style="width:14%" />
+            <col style="width:38%" />
+            <col style="width:20%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Företag</th>
+              <th scope="col">Stad</th>
+              <th scope="col">Inriktning</th>
+              <th scope="col">Länk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Orange Cyberdefense</td>
+              <td>Malmö</td>
+              <td>Cybersäkerhet, SOC, rådgivning</td>
+              <td><a href="https://orangecyberdefense.com/" target="_blank" rel="noopener">orangecyberdefense.com</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© <span id="year">2025</span> André Edvardsson – Portfolio</div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
